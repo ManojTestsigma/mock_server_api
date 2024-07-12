@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.5'
+    id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'org.testsigma'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    implementation 'com.github.javafaker:javafaker:0.15'
+    implementation 'org.yaml:snakeyaml:1.33' //transitive dependency for java faker.
+    implementation 'org.flywaydb:flyway-core:9.20.1'
+    implementation 'org.flywaydb:flyway-mysql'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
