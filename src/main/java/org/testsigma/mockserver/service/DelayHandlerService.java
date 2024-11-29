@@ -46,8 +46,7 @@ public class DelayHandlerService {
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
-           log.error("Interrupted sleep {}", e.getMessage(), e);
+            throw new RuntimeException(e);
         }
     }
-
 }
